@@ -6,4 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  newElement?: string
+
+  onNewElementKey(event: KeyboardEvent) {
+    if (event.key === 'Enter' && this.newElement) {
+      this.elements.push(this.newElement);
+      this.newElement = undefined;
+    }
+  }
+
+  elements: string[] = []
 }
