@@ -26,19 +26,15 @@
 
 <div>
   <h1>Enter Score</h1>
+  <div *ngFor="let element of scoredElements">
+    {{ element }}
+  </div>
   <div *ngIf="elements.length < 2"><i>there are not enough entities yet; enter some</i></div>
-  <ng-container *ngIf="elements.length >= 2">
-    <select [ngModel]="getScoreElement(0)" (ngModelChange)="setScoreElement(0, $event)">
+  <ng-container *ngIf="getUnscoredElements() as unscoredElements">
+    <select *ngIf="unscoredElements.length > 0">
       <option value="" disabled selected>select one</option>
-      <option *ngFor="let element of elements">{{ element }}</option>
+      <option *ngFor="let element of unscoredElements">{{ element }}</option>
     </select>
-    <ng-container *ngIf="getScoreElement(0)">
-      <span>&nbsp;>&nbsp;</span>
-      <select [ngModel]="getScoreElement(1)" (ngModelChange)="setScoreElement(1, $event)">
-        <option value="" disabled selected>select one</option>
-        <option *ngFor="let element of elements">{{ element }}</option>
-      </select>
-      </ng-container>
   </ng-container>
 </div>
 
