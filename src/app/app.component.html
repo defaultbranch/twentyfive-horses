@@ -14,12 +14,14 @@
 <div>
   <h1>Distance Matrix</h1>
   <div *ngIf="elements.length === 0"><i>there are no entities yet; enter some</i></div>
-  <div *ngFor="let rowElement of elements; index as i">
-    <span >{{ rowElement }}</span>
-    <span *ngFor="let colElement of elements; index as j">
-      x
-    </span>
-</div>
+  <table *ngIf="elements.length > 0">
+    <tr *ngFor="let rowElement of elements; index as i">
+      <th>{{ rowElement }}</th>
+      <td *ngFor="let colElement of elements; index as j">
+        ?
+      </td>
+    </tr>
+  </table>
 </div>
 
 <div>
