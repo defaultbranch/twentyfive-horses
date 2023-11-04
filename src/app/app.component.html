@@ -1,14 +1,28 @@
 
 <div>
-  <h1>Problem Domain</h1>
+  <h1>Entities</h1>
   <div *ngFor="let element of elements">
     {{ element }}
-    <button (click)="removeElement(element)">x</button>
+    <button (click)="removeElement(element)">⨯</button>
   </div>
-  <input [(ngModel)]="newElement" (keyup)="onNewElementKey($event)">
+  <div>
+    Add one more:
+    <input [(ngModel)]="newElement" (keyup)="onNewElementKey($event)">
+  </div>
 </div>
 
+<div>
+  <h1>Distance Matrix</h1>
+  <div *ngIf="elements.length === 0"><i>there are no entities yet; enter some</i></div>
+  <div *ngFor="let rowElement of elements; index as i">
+    <span >{{ rowElement }}</span>
+    <span *ngFor="let colElement of elements; index as j">
+      x
+    </span>
+</div>
+</div>
 
 <div>
+  <h1>Further development</h1>
   to be continued
 </div>
