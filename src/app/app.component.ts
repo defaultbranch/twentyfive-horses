@@ -27,4 +27,14 @@ export class AppComponent {
   removeElement(element: string) {
     this.elements = this.elements.filter(it => it !== element);
   }
+
+  scoreElements: string[] = []
+
+  getScoreElement(index: number): string {
+    return this.scoreElements[index] ?? '';
+  }
+
+  setScoreElement(index: number, value: string) {
+    this.scoreElements[index] = value
+  }
 }

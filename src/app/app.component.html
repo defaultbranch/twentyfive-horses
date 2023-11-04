@@ -25,6 +25,24 @@
 </div>
 
 <div>
+  <h1>Enter Score</h1>
+  <div *ngIf="elements.length < 2"><i>there are not enough entities yet; enter some</i></div>
+  <ng-container *ngIf="elements.length >= 2">
+    <select [ngModel]="getScoreElement(0)" (ngModelChange)="setScoreElement(0, $event)">
+      <option value="" disabled selected>select one</option>
+      <option *ngFor="let element of elements">{{ element }}</option>
+    </select>
+    <ng-container *ngIf="getScoreElement(0)">
+      <span>&nbsp;>&nbsp;</span>
+      <select [ngModel]="getScoreElement(1)" (ngModelChange)="setScoreElement(1, $event)">
+        <option value="" disabled selected>select one</option>
+        <option *ngFor="let element of elements">{{ element }}</option>
+      </select>
+      </ng-container>
+  </ng-container>
+</div>
+
+<div>
   <h1>Further development</h1>
   to be continued
 </div>
