@@ -1,6 +1,10 @@
 
 <div>
   <h1>Problem Domain</h1>
+  <div *ngFor="let element of elements">
+    {{ element }}
+    <button (click)="removeElement(element)">x</button>
+  </div>
   <input [(ngModel)]="newElement" (keyup)="onNewElementKey($event)">
 </div>
 

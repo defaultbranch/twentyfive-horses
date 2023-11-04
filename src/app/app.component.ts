@@ -11,10 +11,20 @@ export class AppComponent {
 
   onNewElementKey(event: KeyboardEvent) {
     if (event.key === 'Enter' && this.newElement) {
-      this.elements.push(this.newElement);
+      this.addElement(this.newElement);
       this.newElement = undefined;
     }
   }
 
   elements: string[] = []
+
+  addElement(element: string) {
+    if (!this.elements.includes(element)) {
+      this.elements.push(element);
+    }
+  }
+
+  removeElement(element: string) {
+    this.elements = this.elements.filter(it => it !== element);
+  }
 }
