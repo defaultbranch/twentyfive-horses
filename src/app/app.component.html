@@ -24,6 +24,10 @@
       </td>
     </tr>
   </table>
+  <ng-container *ngIf="elements.length >= 2">
+    <button (click)="shuffle()">Shuffle</button>
+    <button (click)="normalize()">Normalize</button>
+  </ng-container>
 </div>
 
 <div>

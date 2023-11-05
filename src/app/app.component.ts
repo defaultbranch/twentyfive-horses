@@ -87,6 +87,34 @@ export class AppComponent {
     }
     this.scoredElements = [];
   }
+
+  swap(i: number, j: number) {
+    const a = this.elements[i];
+    this.elements[i] = this.elements[j];
+    this.elements[j] = a;
+
+    const b = this.scoreMatrix[i];
+    this.scoreMatrix[i] = this.scoreMatrix[j];
+    this.scoreMatrix[j] = b;
+
+    for (let row of this.scoreMatrix) {
+      if (row) {
+        const c = row[i];
+        row[i] = row[j];
+        row[j] = c;
+      }
+    }
+  }
+
+  shuffle() {
+    for (var i = 0; i < this.elements.length; i++) {
+      const j = Math.floor(Math.random() * (this.elements.length - 1));
+      const jj = j < i ? j : j + 1;
+      this.swap(i, jj);
+    }
+  }
+
+  normalize() { }
 }
 
 type Score = undefined | '>' | '<';
