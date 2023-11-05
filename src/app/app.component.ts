@@ -40,15 +40,19 @@ export class AppComponent {
 
   private newScoredSelect?: ElementRef;
 
-  @ViewChild('newScoredSelect') set content(content: ElementRef) {
-    if(content) {
-        this.newScoredSelect = content;
+  @ViewChild('newScoredSelect') set newScoredSelectContent(content: ElementRef) {
+    if (content) {
+      console.log(content);
+      this.newScoredSelect = content;
     }
- }
+  }
+
   newScoredSelectChanged() {
-    console.log(this.newScoredSelect);
     if (this.newScoredSelect?.nativeElement && 'value' in this.newScoredSelect.nativeElement) {
       this.scoredElements.push(`${this.newScoredSelect.nativeElement.value}`);
+      if (this.newScoredSelect?.nativeElement && 'selectedIndex' in this.newScoredSelect.nativeElement) {
+        this.newScoredSelect.nativeElement.selectedIndex = 0;
+      }
     }
   }
 }
