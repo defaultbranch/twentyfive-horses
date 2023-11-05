@@ -114,7 +114,15 @@ export class AppComponent {
     }
   }
 
-  normalize() { }
+  normalize() {
+    for (var i = 0; i < this.elements.length - 1; i++) {
+      for (var j = i + 1; j < this.elements.length; j++) {
+        if (this.scoreMatrix[i] && this.scoreMatrix[i][j] && this.scoreMatrix[i][j] === '<') {
+          this.swap(i, j);
+        }
+      }
+    }
+  }
 }
 
 type Score = undefined | '>' | '<';
