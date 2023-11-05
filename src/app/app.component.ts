@@ -98,6 +98,10 @@ export class AppComponent {
     return this.scoreMatrix[row][column];
   }
 
+  clearScoreMatrix() {
+    this.scoreMatrix = [];
+  }
+
   applyNewScore() {
     for (var i = 0; i < this.scoredElements.length - 1; i++) {
       const ii = this.elements.findIndex(it => it == this.scoredElements[i]);
