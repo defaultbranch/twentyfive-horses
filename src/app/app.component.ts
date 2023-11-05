@@ -83,6 +83,14 @@ export class AppComponent {
     this.scoredElements = this.elements.slice(first, first + count).sort();
   }
 
+  setScoreForEachNth(interval: number) {
+    const result = [];
+    for (let i = 0; i < this.elements.length; i += interval) {
+      result.push(this.elements[i]);
+    }
+    this.scoredElements = result.sort();
+  }
+
   scoreMatrix: Score[][] = [];
 
   getScore(row: number, column: number): Score {

@@ -63,6 +63,9 @@
       </ng-container>
     </div>
   </ng-container>
+  <div *ngIf="elements.length === 25">
+    <button (click)="setScoreForEachNth(5)">Race each 5th leader</button>
+  </div>
   <div *ngIf="scoredElements.length >= 2">
     <button (click)="applyNewScore()">Apply score</button>
   </div>
