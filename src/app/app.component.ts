@@ -36,7 +36,11 @@ export class AppComponent {
   }
 
   setElementsToOneToFive() {
-    this.elements = ['One', 'Two', 'Three', 'Four', 'Five'];
+    const result = [];
+    for (let i = 1; i <= 5; i++) {
+      result.push(`${i}`);
+      this.elements = result;
+    }
   }
 
   setElementsToOneTo25Horses() {
@@ -73,6 +77,10 @@ export class AppComponent {
         this.newScoredSelect.nativeElement.selectedIndex = 0;
       }
     }
+  }
+
+  setScoreForField(first: number, count: number) {
+    this.scoredElements = this.elements.slice(first, first + count).sort();
   }
 
   scoreMatrix: Score[][] = [];

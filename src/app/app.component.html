@@ -41,19 +41,31 @@
   </table>
   <div *ngIf="elements.length < 2"><i>there are not enough entities yet; enter some</i></div>
   <ng-container *ngIf="getUnscoredElements() as unscoredElements">
-    <ng-container *ngIf="elements.length >= 2 && unscoredElements.length > 0">
+    <div *ngIf="elements.length >= 2 && unscoredElements.length > 0">
       Add one more: <select #newScoredSelect (change)="newScoredSelectChanged()">
         <option value="" disabled selected>select one</option>
         <option *ngFor="let element of unscoredElements">{{ element }}</option>
       </select>
-      <ng-container *ngIf="scoredElements.length >= 2">
-        or
+    </div>
+    <div *ngIf="elements.length >= 5">
+      <button (click)="setScoreForField(0, 5)">Race the 1st five</button>
+      <ng-container *ngIf="elements.length >= 10">
+        <button (click)="setScoreForField(5, 5)">Race the 2nd five</button>
+        <ng-container *ngIf="elements.length >= 15">
+          <button (click)="setScoreForField(10, 5)">Race the 3rd five</button>
+          <ng-container *ngIf="elements.length >= 20">
+            <button (click)="setScoreForField(15, 5)">Race the 4th five</button>
+            <ng-container *ngIf="elements.length >= 25">
+              <button (click)="setScoreForField(20, 5)">Race the 5th five</button>
+            </ng-container>
+          </ng-container>
+        </ng-container>
       </ng-container>
-    </ng-container>
+    </div>
   </ng-container>
-  <ng-container *ngIf="scoredElements.length >= 2">
+  <div *ngIf="scoredElements.length >= 2">
     <button (click)="applyNewScore()">Apply score</button>
-  </ng-container>
+  </div>
 </div>
 
 <div>
