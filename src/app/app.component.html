@@ -16,10 +16,11 @@
   <h1>Distance Matrix</h1>
   <div *ngIf="elements.length === 0"><i>there are no entities yet; enter some</i></div>
   <table *ngIf="elements.length > 0">
-    <tr *ngFor="let rowElement of elements; index as i">
+    <tr *ngFor="let rowElement of elements; index as row">
       <td>{{ rowElement }}</td>
-      <td *ngFor="let colElement of elements; index as j">
-        ?
+      <td *ngFor="let colElement of elements; index as column">
+        <ng-container *ngIf="getScore(row, column) as score">{{ score }}</ng-container>
+        <ng-container *ngIf="getScore(row, column) === undefined">·</ng-container>
       </td>
     </tr>
   </table>
@@ -39,6 +40,7 @@
       <option value="" disabled selected>select one</option>
       <option *ngFor="let element of unscoredElements">{{ element }}</option>
     </select>
+    or <button (click)="applyNewScore()">Apply score</button>
   </ng-container>
 </div>
 

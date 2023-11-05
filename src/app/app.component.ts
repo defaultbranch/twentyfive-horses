@@ -59,4 +59,27 @@ export class AppComponent {
       }
     }
   }
+
+  scoreMatrix: Score[][] = [];
+
+  getScore(row: number, column: number): Score {
+    if (this.scoreMatrix[row] === undefined) return undefined;
+    return this.scoreMatrix[row][column];
+  }
+
+  applyNewScore() {
+    for (var i = 0; i < this.scoredElements.length - 1; i++) {
+      const ii = this.elements.findIndex(it => it == this.scoredElements[i]);
+      for (var j = i + 1; j < this.scoredElements.length; j++) {
+        const jj = this.elements.findIndex(it => it == this.scoredElements[j]);
+        if (this.scoreMatrix[ii] === undefined) this.scoreMatrix[ii] = [];
+        this.scoreMatrix[ii][jj] = '>';
+        if (this.scoreMatrix[jj] === undefined) this.scoreMatrix[jj] = [];
+        this.scoreMatrix[jj][ii] = '<';
+      }
+    }
+    this.scoredElements = [];
+  }
 }
+
+type Score = undefined | '>' | '<';
