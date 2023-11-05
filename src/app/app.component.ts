@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -36,5 +36,19 @@ export class AppComponent {
 
   getUnscoredElements(): string[] {
     return this.elements.filter(it => !this.scoredElements.includes(it));
+  }
+
+  private newScoredSelect?: ElementRef;
+
+  @ViewChild('newScoredSelect') set content(content: ElementRef) {
+    if(content) {
+        this.newScoredSelect = content;
+    }
+ }
+  newScoredSelectChanged() {
+    console.log(this.newScoredSelect);
+    if (this.newScoredSelect?.nativeElement && 'value' in this.newScoredSelect.nativeElement) {
+      this.scoredElements.push(`${this.newScoredSelect.nativeElement.value}`);
+    }
   }
 }

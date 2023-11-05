@@ -32,7 +32,7 @@
   </div>
   <div *ngIf="elements.length < 2"><i>there are not enough entities yet; enter some</i></div>
   <ng-container *ngIf="getUnscoredElements() as unscoredElements">
-    <select *ngIf="unscoredElements.length > 0">
+    <select *ngIf="unscoredElements.length > 0" #newScoredSelect (change)="newScoredSelectChanged()">
       <option value="" disabled selected>select one</option>
       <option *ngFor="let element of unscoredElements">{{ element }}</option>
     </select>
