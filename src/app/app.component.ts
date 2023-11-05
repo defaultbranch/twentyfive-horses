@@ -28,6 +28,10 @@ export class AppComponent {
     this.elements = this.elements.filter(it => it !== element);
   }
 
+  setElementsToOneToFive() {
+    this.elements = ['One', 'Two', 'Three', 'Four', 'Five'];
+  }
+
   scoredElements: string[] = []
 
   getUnscoredElements(): string[] {

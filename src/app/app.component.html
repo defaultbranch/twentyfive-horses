@@ -1,13 +1,14 @@
-
 <div>
   <h1>Entities</h1>
-  <div *ngFor="let element of elements">
-    {{ element }}
-    <button (click)="removeElement(element)">⨯</button>
-  </div>
+  <table *ngIf="elements.length > 0">
+    <tr *ngFor="let element of elements">
+      <td>{{ element }}</td>
+      <td><button (click)="removeElement(element)">⨯</button></td>
+    </tr>
+  </table>
   <div>
-    Add one more:
-    <input [(ngModel)]="newElement" (keyup)="onNewElementKey($event)">
+    Add one more: <input [(ngModel)]="newElement" (keyup)="onNewElementKey($event)">
+    or <button (click)="setElementsToOneToFive()">Set to 1..5</button>
   </div>
 </div>
 
@@ -16,7 +17,7 @@
   <div *ngIf="elements.length === 0"><i>there are no entities yet; enter some</i></div>
   <table *ngIf="elements.length > 0">
     <tr *ngFor="let rowElement of elements; index as i">
-      <th>{{ rowElement }}</th>
+      <td>{{ rowElement }}</td>
       <td *ngFor="let colElement of elements; index as j">
         ?
       </td>
