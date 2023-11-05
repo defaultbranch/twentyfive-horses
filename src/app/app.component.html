@@ -36,11 +36,18 @@
   </table>
   <div *ngIf="elements.length < 2"><i>there are not enough entities yet; enter some</i></div>
   <ng-container *ngIf="getUnscoredElements() as unscoredElements">
-    Add one more: <select *ngIf="unscoredElements.length > 0" #newScoredSelect (change)="newScoredSelectChanged()">
-      <option value="" disabled selected>select one</option>
-      <option *ngFor="let element of unscoredElements">{{ element }}</option>
-    </select>
-    or <button (click)="applyNewScore()">Apply score</button>
+    <ng-container *ngIf="elements.length >= 2 && unscoredElements.length > 0">
+      Add one more: <select #newScoredSelect (change)="newScoredSelectChanged()">
+        <option value="" disabled selected>select one</option>
+        <option *ngFor="let element of unscoredElements">{{ element }}</option>
+      </select>
+      <ng-container *ngIf="scoredElements.length >= 2">
+        or
+      </ng-container>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngIf="scoredElements.length >= 2">
+    <button (click)="applyNewScore()">Apply score</button>
   </ng-container>
 </div>
 

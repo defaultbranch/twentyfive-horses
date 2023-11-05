@@ -25,7 +25,14 @@ export class AppComponent {
   }
 
   removeElement(element: string) {
-    this.elements = this.elements.filter(it => it !== element);
+    const i = this.elements.findIndex(it => it === element);
+    if (i >= 0) {
+      this.elements.splice(i, 1);
+      this.scoreMatrix.splice(i, 1);
+      for (let row of this.scoreMatrix) {
+        if (row) row.splice(i, 1);
+      }
+    }
   }
 
   setElementsToOneToFive() {
