@@ -39,6 +39,14 @@ export class AppComponent {
     this.elements = ['One', 'Two', 'Three', 'Four', 'Five'];
   }
 
+  setElementsToOneTo25Horses() {
+    const result = [];
+    for (let i = 1; i <= 25; i++) {
+      result.push(`Horse ${("0" + i).slice(-2)}`);
+      this.elements = result;
+    }
+  }
+
   scoredElements: string[] = []
 
   getUnscoredElements(): string[] {
