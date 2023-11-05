@@ -38,6 +38,10 @@ export class AppComponent {
     return this.elements.filter(it => !this.scoredElements.includes(it));
   }
 
+  removeScoredElement(element: string) {
+    this.scoredElements = this.scoredElements.filter(it => it !== element);
+  }
+
   private newScoredSelect?: ElementRef;
 
   @ViewChild('newScoredSelect') set newScoredSelectContent(content: ElementRef) {
