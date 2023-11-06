@@ -159,6 +159,25 @@ export class AppComponent {
       }
     }
   }
+
+  updateTransitives() {
+    for (var i = 0; i < this.elements.length; i++) {
+      if (this.scoreMatrix[i]) for (var j = 0; j < this.elements.length; j++) {
+        if (this.scoreMatrix[i][j]) {
+          if (this.scoreMatrix[i][j] === '<') {
+            for (var jj = 0; jj < this.elements.length; jj++) {
+              if (this.scoreMatrix[j][jj] === '<') this.scoreMatrix[i][jj] = '<';
+            }
+          } else if (this.scoreMatrix[i][j] === '>') {
+            for (var jj = 0; jj < this.elements.length; jj++) {
+              if (this.scoreMatrix[j][jj] === '>') this.scoreMatrix[i][jj] = '>';
+            }
+          }
+        }
+      }
+    }
+
+  }
 }
 
 type Score = undefined | '>' | '<';
