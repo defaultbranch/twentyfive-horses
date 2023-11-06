@@ -23,6 +23,7 @@
         <ng-container *ngIf="getScore(row, column) as score">{{ score }}</ng-container>
         <ng-container *ngIf="getScore(row, column) === undefined">·</ng-container>
       </td>
+      <td> ⟨ {{ worseThan(rowElement) }} | {{ betterThan(rowElement) }} 〉 </td>
     </tr>
   </table>
   <ng-container *ngIf="elements.length >= 2">

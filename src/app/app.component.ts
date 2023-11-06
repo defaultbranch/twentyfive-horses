@@ -98,6 +98,14 @@ export class AppComponent {
     return this.scoreMatrix[row][column];
   }
 
+  worseThan(element: string): number {
+    return this.scoreMatrix[this.elements?.indexOf(element)]?.reduce((a: number, v: Score) => { return v === '<' ? a + 1 : a }, 0) ?? 0
+  }
+
+  betterThan(element: string): number {
+    return this.scoreMatrix[this.elements?.indexOf(element)]?.reduce((a: number, v: Score) => { return v === '>' ? a + 1 : a }, 0) ?? 0
+  }
+
   clearScoreMatrix() {
     this.scoreMatrix = [];
   }
