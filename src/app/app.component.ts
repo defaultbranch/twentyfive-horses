@@ -172,6 +172,20 @@ export class AppComponent {
     }
   }
 
+  sortByPotentialLeaders() {
+    for (var i = 0; i < this.elements.length - 1; i++) {
+      const i0 = this.betterThan(this.elements[i]);
+      const i1 = this.worseThan(this.elements[i]);
+      for (var j = this.elements.length - 1; j > i; j--) {
+        const j0 = this.betterThan(this.elements[j]);
+        const j1 = this.worseThan(this.elements[j]);
+        if (j0 + j1 === this.elements.length - 1 || (i0 + i1 < this.elements.length - 1 && (i1 < j1 || (i1 === j1 && i0 <= j0)))) { } else {
+          this.swap(i, j);
+        }
+      }
+    }
+  }
+
   updateTransitives() {
     for (var i = 0; i < this.elements.length; i++) {
       if (this.scoreMatrix[i]) for (var j = 0; j < this.elements.length; j++) {
