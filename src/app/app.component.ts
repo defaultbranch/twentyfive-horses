@@ -160,6 +160,18 @@ export class AppComponent {
     }
   }
 
+  sortByIndetermination() {
+    for (var i = 0; i < this.elements.length - 1; i++) {
+      const ii = this.betterThan(this.elements[i]) + this.worseThan(this.elements[i]);
+      for (var j = i + 1; j < this.elements.length; j++) {
+        const jj = this.betterThan(this.elements[j]) + this.worseThan(this.elements[j]);
+        if (ii > jj) {
+          this.swap(i, j);
+        }
+      }
+    }
+  }
+
   updateTransitives() {
     for (var i = 0; i < this.elements.length; i++) {
       if (this.scoreMatrix[i]) for (var j = 0; j < this.elements.length; j++) {
@@ -176,8 +188,8 @@ export class AppComponent {
         }
       }
     }
-
   }
+
 }
 
 type Score = undefined | '>' | '<';
